@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes import decision, event, flag, analytics, auth
 
 from app.database import Base, engine
 from app import models   
@@ -20,3 +21,4 @@ app.include_router(decision.router, prefix="/decision")
 app.include_router(event.router, prefix="/event")
 app.include_router(flag.router, prefix="/flag")
 app.include_router(analytics.router, prefix="/analytics")
+app.include_router(auth.router, prefix="/auth")

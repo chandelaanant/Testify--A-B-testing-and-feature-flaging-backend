@@ -41,3 +41,11 @@ class FeatureFlag(Base):
     key = Column(String, unique=True)
     is_enabled = Column(Boolean)
     rollout_percentage = Column(Integer)
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    email = Column(String, unique=True)
+    password = Column(String)
+    role = Column(String, default="developer")

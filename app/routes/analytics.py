@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from app.database import SessionLocal
 from app.models import Event, Variant
+from app.models import Event, Variant, Experiment
 
 router = APIRouter()
 
@@ -12,7 +13,17 @@ def get_db():
         yield db
     finally:
         db.close()
-
+@router.get("/")
+def get_all_experiments(db: Session = Depends(get_db)):
+    experiments = db.query(Experiment).all()
+    return [
+        {
+            "id": e.id,
+            "name": e.name,
+            "is_active": e.is_active
+        }
+        for e in experiments
+    ]
 @router.get("/{experiment_id}")
 def get_analytics(experiment_id: int, db: Session = Depends(get_db)):
 
