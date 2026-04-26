@@ -4,7 +4,6 @@ from app.routes import decision, event, flag, analytics, auth
 
 from app.database import Base, engine
 from app import models   
-from app.routes import decision, event, flag, analytics
 
 Base.metadata.create_all(bind=engine)
 

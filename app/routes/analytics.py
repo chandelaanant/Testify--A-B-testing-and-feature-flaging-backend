@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from app.database import SessionLocal
-from app.models import Event, Variant
 from app.models import Event, Variant, Experiment
 
 router = APIRouter()
